@@ -1,0 +1,12 @@
+# OpenStack USER ID = f601cca1172f4e74b09da0de41be7618
+export OS_USERNAME="admin"
+# OpenStack project ID = 159a5a51ab484653a131a12d6e920cb7
+export OS_PROJECT_NAME="demo"
+export OS_AUTH_URL="http://10.0.2.15/identity"
+export OS_CACERT=""
+export NOVA_CERT="/home/clear/devstack/accrc/cacert.pem"
+export OS_PASSWORD="nomoresecret"
+export OS_USER_DOMAIN_ID=default
+unset OS_USER_DOMAIN_NAME
+export OS_PROJECT_DOMAIN_ID=default
+unset OS_PROJECT_DOMAIN_NAME

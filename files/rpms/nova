@@ -1,0 +1,20 @@
+conntrack-tools
+curl
+dnsmasq # for q-dhcp
+dnsmasq-utils # for dhcp_release
+ebtables
+gawk
+genisoimage # required for config_drive
+iptables
+iputils
+kernel-modules # dist:f25,f26,f27,f28
+kpartx
+libxml2-python
+m2crypto
+mysql-devel
+mysql-server # NOPRIME
+parted
+polkit
+rabbitmq-server # NOPRIME
+sqlite
+sudo

@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Copyright (C) 2019 Intel Corporation
+#
+
+# Devstack settings
+
+# Services
+# fault - Overall enable for this plugin
+# fm-client
+# fm-common
+# fm-api
+# fm-rest-api
+# fm-mgr
+
+# Defaults
+# --------
+
+STX_FAULT_NAME=fault
+
+######### Plugin Specific ##########
+enable_service $STX_FAULT_NAME
+
+# This must not use any variables to work properly in OpenStack's DevStack playbook
+define_plugin fault
+# This works for Zuul jobs using OpenStack's DevStack roles
+plugin_requires fault update
+
+# Circular dependencies are fun!
+# fm-rest-api has an undeclared dependency on cgtsclient from config
+# so if that is not present we can't install it
+if ! is_service_enabled config; then
+    disable_service fm-rest-api
+fi
+# but fm-rest-api has its own (declared!) external dependencies too
+if is_service_enabled fm-rest-api; then
+    # update
+    enable_service tsconfig
+fi
+
+# Initial source of lib script
+source $DEST/fault/devstack/lib/fault
